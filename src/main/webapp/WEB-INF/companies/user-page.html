@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .Block {
+        margin: 0 auto;
+        height: 600px;
+        width: 700px;
+        background-color: #b0e0e6;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .Block-title {
+        padding-top: 10px;
+        font-weight: 900;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    .title {
+        font-weight: 900;
+        font-size: 25px;
+        margin-top: 40px;
+        color: #191970;
+        margin-right: 100px;
+    }
+    .title a {
+        text-decoration: none;
+    }
+    .button {
+        border-radius: 10px;
+        background-color: #1e90ff;
+        width: 100px;
+        height: 25px;
+        font-size: 15px;
+        margin: 10px;
+    }
+
+    .mainButton {
+        border-radius: 10px;
+        background-color: #7fffd4;
+        width: 100px;
+        height: 25px;
+        font-size: 15px;
+        margin: 100px;
+        text-decoration: none;
+    }
+    .mainButtonCompany {
+        border-radius: 10px;
+        background-color: #7fffd4;
+        width: 100px;
+        height: 25px;
+        font-size: 15px;
+        margin: 16px;
+        text-decoration: none;
+    }
+    .mainButton a {
+        text-decoration: none;
+    }
+    .mainButtonCompany a {
+        text-decoration: none;
+    }
+    .input {
+        border-radius: 5px;
+        width: 200px;
+        height: 20px;
+        margin: 20px;
+    }
+
+</style>
+<body>
+<p class="title">Student Page</p>
+<tr th:each="stud: ${students}"><hr>
+
+    <td class="title">firstName: <a th:text="${stud.getFirstName()}" class="title"></a></td><br>
+    <td class="title">lastName : <a th:text="${stud.getLastName()}" class="title"></a></td><br>
+    <td class="title">email    : <a th:text="${stud.getEmail()}" class="title"></a></td><br>
+
+    <button class="button"><a th:href="@{/students/{id}edit(id=${stud.getId()})}">Update</a></button>
+    <button class="button"><a th:method="DELETE" th:href="@{/students/{id}(id=${stud.getId()})}">Delete</a></button>
+
+    <hr>
+</tr>
+<button class="title"><a href="/students/new">add new</a></button><hr>
+<p class="title">Teacher Page</p>
+<tr th:each="teach: ${teachers}"><hr>
+
+    <td class="title">firstName: <a th:text="${teach.getFirstName()}" class="title"></a></td><br>
+    <td class="title">lastName : <a th:text="${teach.getLastName()}" class="title"></a></td><br>
+    <td class="title">email    : <a th:text="${teach.getEmail()}" class="title"></a></td><br>
+
+    <button class="button"><a th:href="@{/teachers/{id}edit(id=${teach.getId()})}">Update</a></button>
+    <button class="button"><a th:method="DELETE" th:href="@{/teachers/{id}(id=${teach.getId()})}">Delete</a></button>
+
+    <hr>
+</tr>
+<button class="title"><a href="/teachers/new">add new</a></button>
+<a th:href="@{/companies}" class="title">Back to Main</a>
+</body>
+</html>
